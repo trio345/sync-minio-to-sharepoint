@@ -1,11 +1,11 @@
 # config.py
 GRAPH_API_BASE = "https://graph.microsoft.com/v1.0"
-HOSTNAME = '*'
-SITE_PATH = "*"
+HOSTNAME = 'sqqmy.sharepoint.com'
+SITE_PATH = "TestISGS"
 
-TENANT_ID = "*"
-CLIENT_ID = "*"
-CLIENT_SECRET = "*"
+TENANT_ID = "01b81770-4c98-4845-8ba0-151c7b22f724"
+CLIENT_ID = "f1579a3f-7ab3-4cbd-8236-eae27b8150ae"
+CLIENT_SECRET = "ivP8Q~ZUZsh0Q_xyJlFCb40KPQUT8tJC3i~2ccVT"
 
 MINIO_URL = "http://127.0.0.1:9000"
 MINIO_ACCESSKEY = "minioadmin"

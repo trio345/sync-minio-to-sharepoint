@@ -63,9 +63,11 @@ def run_sync(minio_client, bucket, drive_id, access_token, minio_data, sp_data):
     # print("SPDATA", sp_data)
     for path, sp in sp_data.items():
         source_id = sp.get('source_id')
-        record = file_exists(cursor, source_id)
-        if not record:
-            delete_from_sharepoint(drive_id, access_token, path, 'minio')
+        if source_id:
+            record = file_exists(cursor, source_id)
+            if not record:
+                delete_from_sharepoint(drive_id, access_token, path, 'minio')
+        else: pass
 
     db.commit()
     cursor.close()
