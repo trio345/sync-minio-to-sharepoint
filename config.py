@@ -11,6 +11,7 @@ MINIO_URL = "http://127.0.0.1:9000"
 MINIO_ACCESSKEY = "minioadmin"
 MINIO_SECRETKEY = "minioadmin"
 MINIO_BUCKET = "portal"
+MINIO_REGION = "us-east-1"
 
 
 # Spesify prefix folder in minio, exp: contract, contract/2024,portfolio

@@ -13,7 +13,7 @@ def main():
     site_id = get_site_id(HOSTNAME, SITE_PATH, access_token)
     drive_id = get_drive_id(site_id, access_token)
 
-    minio_client = get_minio_client(MINIO_URL, MINIO_ACCESSKEY, MINIO_SECRETKEY)
+    minio_client = get_minio_client(MINIO_URL, MINIO_ACCESSKEY, MINIO_SECRETKEY, MINIO_REGION)
     minio_data = get_all_minio_files(minio_client, MINIO_BUCKET)
     sp_data = get_all_files(drive_id, access_token)
     sync_minio_to_db(minio_data)

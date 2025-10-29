@@ -5,13 +5,13 @@ import boto3
 import hashlib
 
 
-def get_minio_client(endpoint, access_key, secret_key):
+def get_minio_client(endpoint, access_key, secret_key, region_name="us-east-1"):
     return boto3.client(
         's3',
         endpoint_url=endpoint,
         aws_access_key_id=access_key,
         aws_secret_access_key=secret_key,
-        region_name='us-east-1'
+        region_name=region_name
     )
 
 def get_all_minio_files(client, bucket):
@@ -51,9 +51,10 @@ def sync_minio_to_db(minio_data):
     cursor.execute("SELECT file_path FROM file_sync_state WHERE source = 'minio'")
     db_files = {row[0] for row in cursor.fetchall()}
 
-    new_files = minio_paths - db_files
+    new_files = minio_paths - db_files    
     for file_path in new_files:
-        upsert_file(cursor, file_path, 'minio', file_path)
+        source_id = generate_minio_id(file_path)
+        upsert_file(cursor, file_path, 'minio', source_id)
     
     removed_files = db_files - minio_paths
     for file_path in removed_files:
