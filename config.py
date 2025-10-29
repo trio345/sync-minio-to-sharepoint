@@ -1,11 +1,11 @@
 # config.py
 GRAPH_API_BASE = "https://graph.microsoft.com/v1.0"
-HOSTNAME = '*'
-SITE_PATH = "*"
+HOSTNAME = "****"
+SITE_PATH = "****"
 
-TENANT_ID = "*"
-CLIENT_ID = "*"
-CLIENT_SECRET = "*"
+TENANT_ID = "****"
+CLIENT_ID = "****"
+CLIENT_SECRET = "****"
 
 MINIO_URL = "http://127.0.0.1:9000"
 MINIO_ACCESSKEY = "minioadmin"
