@@ -1,28 +1,23 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 # config.py
-GRAPH_API_BASE = "https://graph.microsoft.com/v1.0"
-HOSTNAME = "****"
-SITE_PATH = "****"
-
-TENANT_ID = "****"
-CLIENT_ID = "****"
-CLIENT_SECRET = "****"
-
-MINIO_URL = "http://127.0.0.1:9000"
-MINIO_ACCESSKEY = "minioadmin"
-MINIO_SECRETKEY = "minioadmin"
-MINIO_BUCKET = "portal"
-MINIO_REGION = "us-east-1"
-
-
-# Spesify prefix folder in minio, exp: contract, contract/2024,portfolio
-PREFIX_FOLDER = [
-    'contract',
-    'portfolio'
-]
-
+GRAPH_API_BASE = os.getenv("GRAPH_API_BASE")
+HOSTNAME = os.getenv("HOSTNAME")
+SITE_PATH = os.getenv("SITE_PATH")
+TENANT_ID = os.getenv("TENANT_ID")
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+MINIO_URL = os.getenv("MINIO_URL")
+MINIO_ACCESSKEY = os.getenv("MINIO_ACCESSKEY")
+MINIO_SECRETKEY = os.getenv("MINIO_SECRETKEY")
+MINIO_BUCKET = os.getenv("MINIO_BUCKET")
+MINIO_REGION = os.getenv("MINIO_REGION")
+PREFIX_FOLDER = os.getenv("PREFIX_FOLDER").split(", ")
 DB_CONFIG = {
-    "host": "localhost",
-    "user": "root",
-    "password": "root",
-    "database": "sync_db"
+    "host": os.getenv("DB_HOST"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD"),
+    "database": os.getenv("DB_NAME")
 }

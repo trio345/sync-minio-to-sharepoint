@@ -29,6 +29,10 @@ def file_exists(cursor, source_id):
     cursor.execute("SELECT file_path FROM file_sync_state WHERE source_id=%s", (source_id,))
     return cursor.fetchone()
 
+def file_check_path(cursor, path):
+    cursor.execute("SELECT file_path FROM file_sync_state WHERE file_path=%s", (path))
+    return cursor.fetchone()
+
 def upsert_file(cursor, path, source, source_id=""):
     cursor.execute("""
         INSERT INTO file_sync_state (file_path, source, source_id)

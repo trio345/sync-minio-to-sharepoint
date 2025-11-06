@@ -5,7 +5,7 @@ import boto3
 import hashlib
 
 
-def get_minio_client(endpoint, access_key, secret_key, region_name="us-east-1"):
+def get_minio_client(endpoint, access_key, secret_key, region_name):
     return boto3.client(
         's3',
         endpoint_url=endpoint,

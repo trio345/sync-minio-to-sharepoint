@@ -2,7 +2,7 @@
 import hashlib
 import requests
 from config import *
-from db import get_db_connection, file_exists, upsert_file,delete_row
+from db import get_db_connection, file_exists, upsert_file, file_check_path
 from minio_utils import generate_minio_id
 from sharepoint_utils import upload_file, set_metadata
 
@@ -30,7 +30,7 @@ def sync_sharepoint_to_db(sp_data):
     for path, sp in sp_data.items():
         source_id = sp.get('source_id')
         if not source_id:
-            record = file_exists(cursor, path)
+            record = file_check_path(cursor, path)
             if not record:
                 upsert_file(cursor, path, 'sharepoint', None)
                 print(f"File baru dari Sharepoint ditambahkan ke DB {path}")
