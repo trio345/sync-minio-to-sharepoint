@@ -27,6 +27,16 @@ def delete_from_sharepoint(drive_id, access_token, file_path, source):
 def sync_sharepoint_to_db(sp_data):
     db = get_db_connection()
     cursor = db.cursor()
+
+    cursor.execute("SELECT file_path FROM file_sync_state WHERE source = 'sharepoint'")
+    db_files = {row[0] for row in cursor.fetchall()}
+
+    sharepoint_paths = set(sp_data.keys())
+    
+    removed_files = db_files - sharepoint_paths
+    for file_path in removed_files:
+        cursor.execute("DELETE FROM file_sync_state WHERE file_path = %s AND source = 'minio'", (file_path,))
+
     for path, sp in sp_data.items():
         source_id = sp.get('source_id')
         if not source_id:

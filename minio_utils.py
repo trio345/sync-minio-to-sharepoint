@@ -58,7 +58,7 @@ def sync_minio_to_db(minio_data):
     
     removed_files = db_files - minio_paths
     for file_path in removed_files:
-        cursor.execute("DELETE FROM file_sync_state WHERE file_path = %s AND source = 'minio'", (file_path))
+        cursor.execute("DELETE FROM file_sync_state WHERE file_path = %s AND source = 'minio'", (file_path,))
 
     db.commit()
     cursor.close()
