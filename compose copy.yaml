@@ -1,0 +1,14 @@
+services:
+  python-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    init: true
+    networks:
+      - appnet
+
+networks:
+  appnet:

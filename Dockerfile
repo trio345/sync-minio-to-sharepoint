@@ -13,7 +13,8 @@ COPY --link requirements.txt ./
 RUN --mount=type=cache,target=/root/.cache/pip \
     python -m venv .venv && \
     .venv/bin/pip install --upgrade pip && \
-    .venv/bin/pip install -r requirements.txt
+    .venv/bin/pip install -r requirements.txt && \ 
+    .venv/bin/pip install cryptography
 
 # Copy any other .py files in the root (if needed)
 COPY --link *.py ./
