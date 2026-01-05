@@ -42,7 +42,7 @@ def generate_minio_id(file_path):
     return hashlib.md5(file_path.encode()).hexdigest()
 
 def sync_minio_to_db(minio_data):
-    print("🔄 Mulai sinkronisasi MinIO ke Database...")
+    print("Mulai sinkronisasi MinIO ke Database...")
     db = get_db_connection()
     cursor = db.cursor()
 
@@ -63,5 +63,5 @@ def sync_minio_to_db(minio_data):
     db.commit()
     cursor.close()
     db.close()
-    print("✅ Sinkronisasi MinIO → Database selesai.")
+    print("Sinkronisasi MinIO → Database selesai.")
 

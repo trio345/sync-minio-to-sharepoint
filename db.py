@@ -14,7 +14,9 @@ def init_db():
             file_path VARCHAR(255) NOT NULL,
             source_id CHAR(36),
             source ENUM('minio', 'sharepoint') NOT NULL,
-            last_synced TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            last_synced TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                   
+            UNIQUE KEY uniq_source_sourceid (source, source_id)
         )
     """)
     db.commit()

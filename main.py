@@ -17,11 +17,10 @@ def main():
     minio_data = get_all_minio_files(minio_client, MINIO_BUCKET)
     sp_data = get_all_files(drive_id, access_token)
     sync_minio_to_db(minio_data)
-    sync_sharepoint_to_db(sp_data)    
-
+    sync_sharepoint_to_db(sp_data)
     run_sync(minio_client, MINIO_BUCKET, drive_id, access_token, minio_data, sp_data)
 
-    print("[✅ SYNC JOB COMPLETED]")
+    print("[SYNC JOB COMPLETED]")
 
 if __name__ == "__main__":
     main()

@@ -59,7 +59,7 @@ def ensure_folder(drive_id, folder_path, access_token):
             if res.status_code in (200, 201):
                 parent_id = res.json()["id"]
             else:
-                print(f"⚠️ Gagal membuat folder '{segment}': {res.status_code}")
+                print(f"Gagal membuat folder '{segment}': {res.status_code}")
                 return None
     return parent_id
 
@@ -68,11 +68,11 @@ def upload_file(drive_id, access_token, file_path, file_data):
     url = f"{GRAPH_API_BASE}/drives/{drive_id}/root:/{file_path}:/content"
     r = requests.put(url, headers=headers, data=file_data)
     if r.status_code not in [200, 201]:
-        print(f"⚠️ Gagal upload {file_path}: {r.status_code}")
+        print(f"Gagal upload {file_path}: {r.status_code}")
         return 0
     else:
         item = r.json()
-        print(f"✅ Uploaded: {file_path}")
+        print(f"Uploaded: {file_path}")
         return item["id"]
 
 def set_metadata(drive_id, access_token, item_id, source_id):
